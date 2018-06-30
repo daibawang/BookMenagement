@@ -44,6 +44,7 @@ public class MainUserFrame extends JFrame {
 	private JButton next;
 	private JButton previous;
 	private JButton last;
+	private JTextField textField_2;
 	
 	/**
 	 * Launch the application.
@@ -111,7 +112,7 @@ public class MainUserFrame extends JFrame {
 		panel_1.setBounds(14, 252, 161, 198);
 		pLeft.add(panel_1);
 		
-		JLabel label_1 = new JLabel("个人信息中心");
+		JLabel label_1 = new JLabel("  个人信息中心");
 		label_1.setFont(new Font("方正舒体", Font.PLAIN, 18));
 		label_1.setBounds(14, 13, 133, 27);
 		panel_1.add(label_1);
@@ -189,19 +190,16 @@ public class MainUserFrame extends JFrame {
 		label_6.setBounds(473, 34, 97, 26);
 		panel_2.add(label_6);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(558, 37, 91, 24);
-		for(int i=0; i<type.length;i++){
-			comboBox.addItem(type[i]);
-		}
-		
-		panel_2.add(comboBox);
-		
 		JButton button_7 = new JButton("搜索");
 
 		button_7.setBounds(672, 30, 91, 38);
 		button_7.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/搜索探讨.png")));
 		panel_2.add(button_7);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(561, 37, 97, 24);
+		panel_2.add(textField_2);
 		
 		
 		

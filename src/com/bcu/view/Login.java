@@ -96,7 +96,7 @@ public class Login extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				self.dispose();
-				LoginFrame frame = new LoginFrame();
+				Login_student frame = new Login_student();
 				frame.setVisible(true);
 			}
 		});

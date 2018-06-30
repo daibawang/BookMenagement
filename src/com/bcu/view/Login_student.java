@@ -3,34 +3,24 @@ package com.bcu.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-
-import org.pushingpixels.substance.api.SubstanceLookAndFeel;
-import org.pushingpixels.substance.api.skin.BusinessBlueSteelSkin;
-import org.pushingpixels.substance.api.skin.CremeSkin;
 
 import com.bcu.bean.Student;
 import com.bcu.dao.StudentDao;
 
-import java.awt.FlowLayout;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.JButton;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
-import java.awt.Font;
-
-public class LoginFrame extends JFrame {
-
+public class Login_student extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField UserField;
@@ -50,7 +40,7 @@ public class LoginFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame frame = new LoginFrame();
+					Login_student frame = new Login_student();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +48,7 @@ public class LoginFrame extends JFrame {
 			}
 		});
 	}
-	public LoginFrame() {
+	public Login_student() {
 		//设置布局
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 476, 316);
@@ -111,7 +101,7 @@ public class LoginFrame extends JFrame {
 		
 		JButton button = new JButton("登录");
 		button.setFont(new Font("方正舒体", Font.PLAIN, 19));
-		final LoginFrame loginFrame = this;
+		final Login_student loginFrame = this;
 		
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
