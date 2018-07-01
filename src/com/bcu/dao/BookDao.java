@@ -229,9 +229,10 @@ public class BookDao {
 			Connection connection =null;
 			try {
 				connection =JDBCUtils.getConnection();
-				String sqlString = "select * from book where bookName=?";
+				String sqlString = "select * from book where bookName like ?";
 				QueryRunner queryRunner = new QueryRunner();
-				Object[] params = {name};
+				String nam = "%"+name+"%";
+				Object[] params = {nam};
 				Book book;
 				book=(Book)queryRunner.query(connection, sqlString,new BeanHandler(Book.class),params);
 				return book;

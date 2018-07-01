@@ -52,7 +52,7 @@ public class Login_student extends JFrame {
 	public Login_student() {
 		//设置布局
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 476, 316);
+		setBounds(300, 250, 476, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

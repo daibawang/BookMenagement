@@ -14,15 +14,6 @@ public class BookTableModel extends AbstractTableModel{
 	//每页显示的数据个数
 	private int number = 8;
 	//	临时的list集合，存储更改的书籍信息
-	private List<Book> bookList = new ArrayList<>();
-	
-	public List<Book> getBookList() {
-		return bookList;
-	}
-
-	public void setBookList(List<Book> bookList) {
-		this.bookList = bookList;
-	}
 	//最初先加载前7条数据
 	private List<Book> list = new BookDao().getBooks(0,number);
 	private String[] titles = {"图书名称","图书作者","图书编号","图书类型","出版社","所在书架","出版日期","在架数"};

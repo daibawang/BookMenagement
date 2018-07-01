@@ -65,7 +65,7 @@ public class Login extends JFrame {
 	public Login() {
 		//设置布局
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 476, 316);
+		setBounds(300, 250, 476, 316);
 		contentPane = new JPanel();
 		setTitle("图书借阅管理系统");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -42,23 +42,23 @@ public class LoginFrame2 extends JFrame {
 	 */
 	public static void main(String[] args) {
 		//
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		try {
-			SwingUtilities.invokeAndWait(new Runnable() {
-				
-				@Override
-				public void run() {
-					SubstanceLookAndFeel.setSkin(new CremeSkin());
-					
-				}
-			});
-		} catch (InvocationTargetException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		JFrame.setDefaultLookAndFeelDecorated(true);
+//		try {
+//			SwingUtilities.invokeAndWait(new Runnable() {
+//				
+//				@Override
+//				public void run() {
+//					SubstanceLookAndFeel.setSkin(new CremeSkin());
+//					
+//				}
+//			});
+//		} catch (InvocationTargetException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -73,7 +73,7 @@ public class LoginFrame2 extends JFrame {
 	public LoginFrame2() {
 		//设置布局
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 476, 316);
+		setBounds(300, 250, 476, 316);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,11 +128,9 @@ public class LoginFrame2 extends JFrame {
 					Wrong.setText("账号或者密码错误");
 				}else{
 					System.out.println("登录成功");
-//					当前登录窗口销毁
-//					self.dispose();
-////					显示主窗口
-//					MainFrame frame = new MainFrame();
-//					frame.setVisible(true);
+					loginFrame.dispose();
+					MenageMainFrame frame = new MenageMainFrame();
+					frame.setVisible(true);
 				}
 			}
 		});

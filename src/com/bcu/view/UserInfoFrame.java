@@ -48,7 +48,7 @@ public class UserInfoFrame extends JFrame {
 	 */
 	public UserInfoFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 663, 464);
+		setBounds(300, 250, 663, 464);
 		contentPane = new JPanel();
 		setTitle("图书借阅记录");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

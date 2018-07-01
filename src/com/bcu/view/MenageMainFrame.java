@@ -52,7 +52,7 @@ public class MenageMainFrame extends JFrame {
 	 */
 	public MenageMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 663, 464);
+		setBounds(300, 250, 663, 464);
 		contentPane = new JPanel();
 		setTitle("个人中心");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,24 +140,6 @@ public class MenageMainFrame extends JFrame {
 		button_3.setIcon(new ImageIcon(Login.class.getResource("/images/管理员.png")));
 		button_3.setBounds(173, 227, 186, 39);
 		panel_table.add(button_3);
-		
-		List<Borrow> bbook = new ArrayList<Borrow>();
-		BorrowDao bdao = new BorrowDao();
-		
-		List<Return> rbook = new ArrayList<Return>();
-		ReturnDao rdao = new ReturnDao();
-		bbook = bdao.getBorrowByUid(Login_student.Userid);
-		rbook = rdao.getReturnByUid(Login_student.Userid);
-		
-		int num=bbook.size()-rbook.size();
-		
-		bbook = bdao.getBorrowByState(Login_student.Userid, 0, 1);
-		Borrow book=null;
-		System.out.println("bdao"+bdao);
-		if(bbook!=null){
-			book = bbook.get(0);
-		}
-		String datestr=new SimpleDateFormat("yyyy-MM-dd").format(book.getBorrowTime());
 	}
 
 }

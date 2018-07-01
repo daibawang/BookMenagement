@@ -34,10 +34,6 @@ public class UserBorrowRecordFrame extends JFrame {
 	private JTable table;
 	private int start;
 	private int number = 8;
-	private JButton first; 
-	private JButton next;
-	private JButton previous;
-	private JButton last;
 	private JButton button;
 	private JButton button_1;
 
@@ -64,7 +60,7 @@ public class UserBorrowRecordFrame extends JFrame {
 	public UserBorrowRecordFrame() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 863, 614);
+		setBounds(300, 250, 863, 614);
 		contentPane = new JPanel();
 		setTitle("图书借阅记录");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -82,56 +78,6 @@ public class UserBorrowRecordFrame extends JFrame {
 		label_3.setBounds(14, 13, 211, 27);
 		panel_2.add(label_3);
 		label_3.setFont(new Font("方正舒体", Font.PLAIN, 22));
-		
-		first = new JButton("首页");
-		first.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				start = 0;
-				//调用dao新的获取数据
-				updateTable();
-				updateButton();
-			}
-		});
-		first.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		first.setBounds(355, 488, 101, 34);
-		contentPane.add(first);
-		
-		next = new JButton("下一页");
-		next.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				start+=number;
-				updateTable();
-				updateButton();
-				
-			}
-		});
-		next.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		next.setBounds(475, 488, 101, 34);
-		contentPane.add(next);
-		
-		previous = new JButton("上一页");
-		previous.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				start-=number;
-				updateTable();
-				updateButton();
-			}
-		});
-		previous.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		previous.setBounds(590, 488, 101, 34);
-		contentPane.add(previous, BorderLayout.SOUTH);
-		
-		last = new JButton("尾页");
-		last.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				start = last();
-				updateTable();
-				updateButton();
-			}
-		});
-		last.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		last.setBounds(705, 488, 101, 34);
-		contentPane.add(last, BorderLayout.SOUTH);
 		
 		
 		
@@ -166,12 +112,10 @@ public class UserBorrowRecordFrame extends JFrame {
 		button = new JButton("借阅记录");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tableModel = new BorrowTableModel();
-				table = new JTable(tableModel);
-				number=8;
-				start=0;
+				BorrowDao bdao =new BorrowDao();
+				start=0;number=8;
+				tableModel.setList(bdao.getBorrow());
 				updateTable();
-				updateButton();
 				label_3.setText("我借阅过的书籍");
 				label_3.setForeground(new Color(0, 0, 0));
 				
@@ -179,7 +123,7 @@ public class UserBorrowRecordFrame extends JFrame {
 		});
 		button.setForeground(new Color(0, 153, 255));
 		button.setFont(new Font("方正舒体", Font.PLAIN, 20));
-		button.setBounds(39, 483, 113, 43);
+		button.setBounds(274, 483, 123, 43);
 		contentPane.add(button);
 		
 		button_1 = new JButton("未还书籍");
@@ -189,44 +133,14 @@ public class UserBorrowRecordFrame extends JFrame {
 				start=0;number=8;
 				tableModel.setList(bdao.getBorrowNocount(Login_student.Userid,start, number));
 				table.updateUI();
-				stopAllButton();
 				label_3.setText("未归还书籍");
 				label_3.setForeground(new Color(255, 102, 51));
 			}
 		});
 		button_1.setForeground(new Color(255, 102, 51));
 		button_1.setFont(new Font("方正舒体", Font.PLAIN, 20));
-		button_1.setBounds(187, 482, 113, 44);
+		button_1.setBounds(478, 482, 132, 44);
 		contentPane.add(button_1);
-		
-//		界面加载以后，先判断按钮的状态
-		updateButton();
-	}
-	//判断按钮是否禁用
-	protected void updateButton() {
-		// TODO Auto-generated method stub
-		if (start == 0) {
-			first.setEnabled(false);
-			previous.setEnabled(false);
-		}else{
-			first.setEnabled(true);
-			previous.setEnabled(true);
-		}
-		
-		if(start == last()){
-			last.setEnabled(false);
-			next.setEnabled(false);
-		}else {
-			last.setEnabled(true);
-			next.setEnabled(true);
-		}
-	}
-	
-	protected void stopAllButton() {
-		first.setEnabled(false);
-		previous.setEnabled(false);
-		last.setEnabled(false);
-		next.setEnabled(false);
 	}
 
 	protected int last() {

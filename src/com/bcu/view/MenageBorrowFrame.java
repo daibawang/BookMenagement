@@ -65,7 +65,7 @@ public class MenageBorrowFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MenageBorrowFrame() {
-		setBounds(100, 100, 863, 614);
+		setBounds(300, 250, 863, 614);
 		contentPane = new JPanel();
 		setTitle("图书借阅记录");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -79,7 +79,7 @@ public class MenageBookFrame extends JFrame {
 	 */
 	public MenageBookFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 863, 638);
+		setBounds(300, 250, 863, 638);
 		contentPane = new JPanel();
 		setTitle("图书借阅");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

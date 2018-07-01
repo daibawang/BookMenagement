@@ -64,7 +64,7 @@ public class UserCollectionFrame extends JFrame {
 	 */
 	public UserCollectionFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 863, 614);
+		setBounds(300, 250, 863, 614);
 		contentPane = new JPanel();
 		setTitle("图书借阅记录");
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
