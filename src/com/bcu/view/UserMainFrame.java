@@ -25,8 +25,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import com.bcu.bean.Book;
 import com.bcu.dao.BookDao;
 import com.bcu.model.BookTableModel;
+import com.bcu.utils.StringUtil;
+import javax.swing.UIManager;
 
-public class MainUserFrame extends JFrame {
+public class UserMainFrame extends JFrame {
 	
 	private JPanel contentPane;
 	JPanel pRight = new JPanel();
@@ -34,7 +36,6 @@ public class MainUserFrame extends JFrame {
 	private final JPanel panel = new JPanel();
 	private JTextField textField;
 	private JTextField textField_1;
-	private String[] type = {"艺术" , "小说", "童话"};  
 	private BookTableModel tableModel;
 	private JTable table_1;
 	private JTable table;
@@ -54,8 +55,9 @@ public class MainUserFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUserFrame frame = new MainUserFrame();
+					UserMainFrame frame = new UserMainFrame();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,7 +68,7 @@ public class MainUserFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainUserFrame() {
+	public UserMainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1044, 606);
 		contentPane = new JPanel();
@@ -95,12 +97,27 @@ public class MainUserFrame extends JFrame {
 		panel.add(button);
 		
 		JButton button_1 = new JButton("图书借阅");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserBorrowFrame frame = new UserBorrowFrame();
+				frame.setVisible(true);
+				//新的关闭，就窗口仍保留
+				frame.setDefaultCloseOperation(UserMainFrame.HIDE_ON_CLOSE);
+			}
+		});
 		button_1.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_1.setBounds(14, 99, 133, 34);
 		button_1.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/借出.png")));
 		panel.add(button_1);
 		
 		JButton button_2 = new JButton("图书归还");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserReturnFrame frame = new UserReturnFrame();
+				frame.setVisible(true);
+				frame.setDefaultCloseOperation(UserMainFrame.HIDE_ON_CLOSE);
+			}
+		});
 		button_2.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_2.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/借入.png")));
 		button_2.setBounds(14, 151, 133, 34);
@@ -118,18 +135,43 @@ public class MainUserFrame extends JFrame {
 		panel_1.add(label_1);
 		
 		JButton button_3 = new JButton("个人信息");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				UserInfoFrame frame4 = new UserInfoFrame();
+				frame4.setVisible(true);
+				//新的关闭，就窗口仍保留
+				frame4.setDefaultCloseOperation(UserMainFrame.HIDE_ON_CLOSE);
+			}
+		});
 		button_3.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_3.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/个人信息.png")));
 		button_3.setBounds(14, 53, 133, 34);
 		panel_1.add(button_3);
 		
 		JButton button_4 = new JButton("借阅记录");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserBorrowRecordFrame frame5 = new UserBorrowRecordFrame();
+				frame5.setVisible(true);
+				//新的关闭，就窗口仍保留
+				frame5.setDefaultCloseOperation(UserMainFrame.HIDE_ON_CLOSE);
+			}
+		});
 		button_4.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_4.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/记录.png")));
 		button_4.setBounds(14, 100, 133, 38);
 		panel_1.add(button_4);
 		
 		JButton button_5 = new JButton("我的收藏");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UserCollectionFrame frame6 = new UserCollectionFrame();
+				frame6.setVisible(true);
+				//新的关闭，就窗口仍保留
+				frame6.setDefaultCloseOperation(UserMainFrame.HIDE_ON_CLOSE);
+			}
+		});
 		button_5.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_5.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/收 藏.png")));
 		button_5.setBounds(14, 151, 133, 34);
@@ -145,8 +187,15 @@ public class MainUserFrame extends JFrame {
 		button_8.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_8.setBounds(14, 151, 133, 34);
 		panel_3.add(button_8);
-		
+		final UserMainFrame self = this;
 		JButton button_6 = new JButton("退出系统");
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				self.dispose();
+				Login framebegin = new Login();
+				framebegin.setVisible(true);
+			}
+		});
 		button_6.setFont(new Font("方正舒体", Font.PLAIN, 15));
 		button_6.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/退出 (2).png")));
 		button_6.setBounds(14, 19, 133, 34);
@@ -161,7 +210,7 @@ public class MainUserFrame extends JFrame {
 		pRight.add(panel_2);
 		
 		JLabel label_3 = new JLabel("条件");
-		label_3.setBounds(14, 0, 137, 27);
+		label_3.setBounds(14, 0, 51, 27);
 		panel_2.add(label_3);
 		label_3.setFont(new Font("方正舒体", Font.PLAIN, 18));
 		
@@ -190,7 +239,27 @@ public class MainUserFrame extends JFrame {
 		label_6.setBounds(473, 34, 97, 26);
 		panel_2.add(label_6);
 		
-		JButton button_7 = new JButton("搜索");
+		JButton button_7 = new JButton("查询");
+		button_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Book sbooks = new Book();
+				sbooks.setBookName(textField.getText());
+				sbooks.setBookAuthor(textField_1.getText());
+				sbooks.setBookType(textField_2.getText());
+				System.out.println(sbooks);
+				BookDao dao = new BookDao();
+				List<Book> list = dao.findbook(sbooks);
+				tableModel.setList(list);
+				if(StringUtil.isNotEmpty(sbooks.getBookAuthor())||StringUtil.isNotEmpty(sbooks.getBookName())||StringUtil.isNotEmpty(sbooks.getBookType())){
+					stopAllButton();
+				}else if(StringUtil.isEmpty(sbooks.getBookAuthor())&&StringUtil.isEmpty(sbooks.getBookName())&&StringUtil.isEmpty(sbooks.getBookType())){
+					updateTable();
+					updateButton();
+				}
+//				更新table界面显示
+				table.updateUI();
+			}
+		});
 
 		button_7.setBounds(672, 30, 91, 38);
 		button_7.setIcon(new ImageIcon(LoginFrame2.class.getResource("/images/搜索探讨.png")));
@@ -201,6 +270,12 @@ public class MainUserFrame extends JFrame {
 		textField_2.setBounds(561, 37, 97, 24);
 		panel_2.add(textField_2);
 		
+		JLabel label_7 = new JLabel("支持不定条件查询，请输入任意条件查询书籍，全为空显示全部");
+		label_7.setForeground(new Color(0, 153, 255));
+		label_7.setFont(new Font("方正舒体", Font.PLAIN, 16));
+		label_7.setBounds(67, 1, 464, 26);
+		panel_2.add(label_7);
+		
 		
 		
 		JLabel label_2 = new JLabel("搜索");
@@ -208,7 +283,7 @@ public class MainUserFrame extends JFrame {
 		pRight.add(label_2);
 		label_2.setFont(new Font("方正舒体", Font.PLAIN, 18));
 		
-		first = new JButton("第一页");
+		first = new JButton("首页");
 		first.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				start = 0;
@@ -218,7 +293,7 @@ public class MainUserFrame extends JFrame {
 			}
 		});
 		first.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		first.setBounds(143, 495, 101, 27);
+		first.setBounds(156, 495, 101, 39);
 		pRight.add(first);
 		
 		next = new JButton("下一页");
@@ -231,7 +306,7 @@ public class MainUserFrame extends JFrame {
 			}
 		});
 		next.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		next.setBounds(281, 495, 101, 27);
+		next.setBounds(281, 495, 101, 39);
 		pRight.add(next);
 		
 		previous = new JButton("上一页");
@@ -243,10 +318,10 @@ public class MainUserFrame extends JFrame {
 			}
 		});
 		previous.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		previous.setBounds(420, 495, 101, 27);
+		previous.setBounds(420, 495, 101, 39);
 		pRight.add(previous);
 		
-		last = new JButton("最后一页");
+		last = new JButton("尾页");
 		last.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				start = last();
@@ -255,7 +330,7 @@ public class MainUserFrame extends JFrame {
 			}
 		});
 		last.setFont(new Font("方正舒体", Font.PLAIN, 17));
-		last.setBounds(563, 495, 101, 27);
+		last.setBounds(563, 495, 101, 39);
 		pRight.add(last);
 		
 		
@@ -316,6 +391,13 @@ public class MainUserFrame extends JFrame {
 			last.setEnabled(true);
 			next.setEnabled(true);
 		}
+	}
+	
+	protected void stopAllButton() {
+		first.setEnabled(false);
+		previous.setEnabled(false);
+		last.setEnabled(false);
+		next.setEnabled(false);
 	}
 
 	protected int last() {

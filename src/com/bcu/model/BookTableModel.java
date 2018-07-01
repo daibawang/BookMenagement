@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import com.bcu.bean.Book;
+import com.bcu.bean.Student;
 import com.bcu.dao.BookDao;
 
 public class BookTableModel extends AbstractTableModel{
@@ -88,5 +89,9 @@ public class BookTableModel extends AbstractTableModel{
 		return titles[column];
 	}
 	
-
+	public void updateBook(int index,Book newbook){
+		Book book = list.get(index);
+		BookDao dao = new BookDao();
+		dao.update(newbook,book.getId());
+	}
 }

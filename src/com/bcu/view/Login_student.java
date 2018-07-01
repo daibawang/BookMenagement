@@ -30,6 +30,7 @@ public class Login_student extends JFrame {
 	private JTextField NumField;
 	private JPasswordField pwd;
 	private JLabel label_3;
+	public static int Userid;
 
 	/**
 	 * Launch the application.
@@ -117,10 +118,11 @@ public class Login_student extends JFrame {
 					Wrong.setText("学号、姓名或者密码错误");
 				}else{
 					System.out.println("登录成功");
+					Userid=student.getId();
 					//当前登录窗口销毁
 					loginFrame.dispose();
 //					显示主窗口
-					MainUserFrame frame = new MainUserFrame();
+					UserMainFrame frame = new UserMainFrame();
 					frame.setVisible(true);
 				}
 			}

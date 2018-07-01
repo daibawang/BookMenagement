@@ -2,12 +2,14 @@ package com.bcu.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import com.bcu.bean.Book;
 import com.bcu.bean.Menage;
-import com.bcu.bean.Student;
 import com.bcu.utils.JDBCUtils;
 
 /*
@@ -40,4 +42,55 @@ public class MenageDao {
 		}
 		return null;
 	}
+	public List<Menage> findAll(){
+		Connection connection =null;
+		try {
+			connection =JDBCUtils.getConnection();
+			String sqlString = "select * from User_menage ";
+			QueryRunner queryRunner = new QueryRunner();
+			 List<Menage> menage=( List<Menage>)queryRunner.query(connection, sqlString,new BeanListHandler(Menage.class));
+			return menage;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCUtils.release(null, null, connection);
+		}
+		return null;
+	}
+	
+	public void add(Menage meng){
+		Connection connection = null;
+		try {
+			connection=JDBCUtils.getConnection();
+			String sql = "insert into user_menage (menageNum,menageName,menagePassword,phone) values (?,?,?,?)";
+			QueryRunner queryRunner = new QueryRunner();
+			Object[] params = {meng.getMenageNum(),meng.getMenageName(),meng.getMenagePassword(),meng.getPhone()};
+			queryRunner.update(connection, sql,params);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			//释放资源的操作，一定要放在finally中
+			JDBCUtils.release(null, null, connection);
+		}
+	}
+	public void update(Menage meng,int id){
+		Connection connection = null;
+		
+		try {
+			connection=JDBCUtils.getConnection();
+			String sql = "update user_menage set menageNum=?,menageName=?,menagePassword=?,phone=? where id=?";
+			QueryRunner queryRunner = new QueryRunner();
+			Object[] params = {meng.getMenageNum(),meng.getMenageName(),meng.getMenagePassword(),meng.getPhone(),id};
+			queryRunner.update(connection, sql,params);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			//释放资源的操作，一定要放在finally中
+			JDBCUtils.release(null, null, connection);
+		}
+	}
+	
 }

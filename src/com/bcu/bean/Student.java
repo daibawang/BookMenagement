@@ -8,7 +8,6 @@ public class Student {
 	private String studentName;
 	private String password;
 	private String sex;
-	private Date birthdate;
 	private String studentClass;
 	private String grade;
 	public int getId() {
@@ -41,12 +40,6 @@ public class Student {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public Date getBirthdate() {
-		return birthdate;
-	}
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
 	public String getStudentClass() {
 		return studentClass;
 	}
@@ -62,7 +55,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", studentNum=" + studentNum + ", studentName=" + studentName + ", password="
-				+ password + ", sex=" + sex + ", birthdate=" + birthdate + ", studentClass=" + studentClass + ", grade="
+				+ password + ", sex=" + sex  + ", studentClass=" + studentClass + ", grade="
 				+ grade + "]";
 	}
 	

@@ -29,23 +29,23 @@ public class Login extends JFrame {
 	 */
 	public static void main(String[] args) {
 		
-		JFrame.setDefaultLookAndFeelDecorated(true);
-		try {
-			SwingUtilities.invokeAndWait(new Runnable() {
-				
-				@Override
-				public void run() {
-					SubstanceLookAndFeel.setSkin(new CremeSkin());
-					
-				}
-			});
-		} catch (InvocationTargetException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		JFrame.setDefaultLookAndFeelDecorated(true);
+//		try {
+//			SwingUtilities.invokeAndWait(new Runnable() {
+//				
+//				@Override
+//				public void run() {
+//					SubstanceLookAndFeel.setSkin(new CremeSkin());
+//					
+//				}
+//			});
+//		} catch (InvocationTargetException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -104,17 +104,6 @@ public class Login extends JFrame {
 		button_1.setBounds(137, 174, 171, 33);
 		button_1.setIcon(new ImageIcon(Login.class.getResource("/images/用户组.png")));
 		contentPane.add(button_1);
-		
-		JButton button_2 = new JButton("皮肤");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				pifu=1;
-			}
-		});
-		button_2.setBounds(162, 229, 113, 27);
-		contentPane.add(button_2);
-		
-		
 		
 	}
 }
